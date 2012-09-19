@@ -1,0 +1,9 @@
+# configuration file for nicki
+
+# outgoing email
+smtp_server: 'ralf.resare.com:10025'
+
+# xmpp server connection
+xmpp_server: 'resare.com'
+xmpp_username: 'nicki'
+xmpp_password: 'c2MjgDR8vc4B'

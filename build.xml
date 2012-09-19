@@ -1,0 +1,27 @@
+<project name="nicki" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <property name="lib.dir" value="lib"/>
+
+    <target name="resolve">
+        <ivy:retrieve/>
+    </target>
+
+    <target name="clean-cache">
+        <ivy:cleancache />
+    </target>
+
+    <path id="classpath">
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="compile" depends="resolve">
+        <mkdir dir="out/production"/>
+        <javac destdir="out/production"
+               encoding="UTF-8" target="1.5" source="1.5" debug="yes"
+               classpathref="classpath">
+            <src path="src"/>
+        </javac>
+    </target>
+</project>

@@ -1,0 +1,4 @@
+Nicki is an incident notification system. It sends incoming notifications to
+the appropriate targets based on a set of scheduling rules.
+
+
