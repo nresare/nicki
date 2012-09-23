@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+
+# yes, this is ugly. In debian versions after squeeze dpkg-dev will hold an
+# include that abstracts this away
+export VERSION=$(shell dpkg-parsechangelog | \
+                 sed -n '/^Version/s/Version: \(.*\)-[^-]*$$/\1/p')
+
+%:
+	dh $@

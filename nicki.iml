@@ -8,7 +8,71 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="junit:junit:4.10" level="project" />
+    <orderEntry type="module-library">
+      <library name="all">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/activation-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/ant-1.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/commons-collections-3.2.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/commons-io-2.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/commons-lang-2.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/commons-logging-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/hamcrest-core-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jdom-1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-continuation-8.1.0.v20120127.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-http-8.1.0.v20120127.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-io-8.1.0.v20120127.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-jmx-8.1.0.v20120127.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-server-8.1.0.v20120127.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-util-8.1.0.v20120127.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/json-20090211.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/junit-4.10.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/log4j-1.2.12.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/logkit-2.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/mail-1.4.5.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/oro-2.0.8.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/servlet-api-3.0.20100224.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/smack-3.2.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/snakeyaml-1.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/velocity-1.7.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/werken-xpath-0.9.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/slf4j-api-1.6.5.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/logback-classic-1.0.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/logback-core-1.0.6.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/lib/commons-io-2.4-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-server-8.1.0.v20120127-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/junit-4.10-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/mail-1.4.5-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/snakeyaml-1.6-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/velocity-1.7-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/smack-3.2.1-javadoc.jar!/doc" />
+          <root url="jar://$MODULE_DIR$/lib/logback-classic-1.0.6-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/logback-core-1.0.6-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/lib/commons-io-2.4-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/hamcrest-core-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-server-8.1.0.v20120127-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/junit-4.10-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/mail-1.4.5-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/snakeyaml-1.6-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/velocity-1.7-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/logback-classic-1.0.6-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/logback-core-1.0.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/debian" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 

@@ -1,4 +1,4 @@
-<project name="nicki" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="nicki" xmlns:ivy="antlib:org.apache.ivy.ant" default="jar">
 
     <property name="lib.dir" value="lib"/>
 
@@ -18,10 +18,30 @@
 
     <target name="compile" depends="resolve">
         <mkdir dir="out/production"/>
-        <javac destdir="out/production"
+        <javac destdir="out/production" includeantruntime="no"
                encoding="UTF-8" target="1.5" source="1.5" debug="yes"
                classpathref="classpath">
             <src path="src"/>
+            <compilerarg value="-Xlint:unchecked"/>
         </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="dist"/>
+        <jar file="dist/${ant.project.name}-${version}.jar">
+            <fileset dir="out/production"/>
+        </jar> 
+    </target>
+
+    <target name="clean">
+	<delete dir="out"/>
+	<delete dir="lib"/>
+	<delete dir="dist"/>
+	<delete dir="debian/nicki"/>
+	<delete>
+	    <fileset dir="debian" includes="*debhelper*"/>
+	</delete>
+	<delete file="debian/nicki.substvars"/>
+	<delete file="debian/files"/>
     </target>
 </project>
