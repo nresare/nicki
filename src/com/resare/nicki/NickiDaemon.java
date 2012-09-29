@@ -7,20 +7,24 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 
+import sun.misc.Signal;
+import sun.misc.SignalHandler;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.util.Map;
 
-
-
 /**
  * This is the main class starting up the application
  */
+@SuppressWarnings("unchecked")
 public class NickiDaemon {
   private static final String DEFAULT_CONFIG_FN = "/etc/nicki.yaml";
   private static final Logger log = LoggerFactory.getLogger(NickiDaemon.class);
+
+  private HttpExposer httpExposer;
 
   public static void main(String[] args) throws Exception {
     log.info("Starting NickiDaemon");
@@ -33,8 +37,16 @@ public class NickiDaemon {
         configFileName = args[i + 1];
       }
     }
-    NickiDaemon nd = new NickiDaemon();
-    nd.init(configFileName);
+
+    final NickiDaemon nd = new NickiDaemon();
+    Signal.handle(new Signal("TERM"), new SignalHandler() {
+      @Override
+      public void handle(Signal signal) {
+        log.info("Caught TERM signal");
+        nd.shutdown();
+      }
+    });
+    nd.run(configFileName);
   }
 
   private static void writePidFile(String filename) {
@@ -54,39 +66,41 @@ public class NickiDaemon {
     return Integer.parseInt(s.substring(0, s.indexOf("@")));
   }
 
-  private void init(String configFileName) throws IOException {
+  private void shutdown() {
+    this.httpExposer.shutdown();
+  }
 
 
-    Map<String, String> config = readConfig(new File(configFileName));
+  private void run(String configFileName) throws IOException {
+
+
+    Map<String, Object> config = readConfig(new File(configFileName));
+
+
 
     NickiServiceImpl ns = new NickiServiceImpl();
     ns.setFormatter(new Formatter());
-
     /*
-         XMPPConduit xo = new XMPPConduit("resare.com", "nicki", "c2MjgDR8vc4B");
-
-     xmpp_server: 'uma.resare.com'
-xmpp_username: 'nicki'
-xmpp_password: 'c2MjgDR8vc4B'
-
-     */
     ns.setXmppConduit(new XMPPConduit(config.get("xmpp_server"),
                                       config.get("xmpp_username"),
                                       config.get("xmpp_password")));
 
+*/
     // this will spin up a non-daemon thread.
-    new HttpExposer(8080, ns);
 
+    int i = (Integer)config.get("incoming_http");
+    httpExposer = new HttpExposer(i, ns);
+    httpExposer.run();
   }
 
-  @SuppressWarnings("unchecked")
-  private static Map<String,String> readConfig(File input) throws IOException {
+
+  private static Map<String,Object> readConfig(File input) throws IOException {
     log.info("Reading configuration file from {}", input.getAbsolutePath());
     Yaml yaml = new Yaml();
     FileInputStream fis = new FileInputStream(input);
     Object o = yaml.load(fis);
     fis.close();
 
-    return (Map<String,String>)o;
+    return (Map<String,Object>)o;
   }
 }
