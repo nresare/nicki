@@ -1,5 +1,8 @@
 # configuration file for nicki
 
+# the http port to listen to incoming alerts on
+incoming_http: 8080
+
 # outgoing email
 smtp_server: 'ralf.resare.com:10025'
 

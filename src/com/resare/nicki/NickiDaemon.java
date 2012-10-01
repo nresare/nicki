@@ -67,30 +67,36 @@ public class NickiDaemon {
   }
 
   private void shutdown() {
-    this.httpExposer.shutdown();
+    if (this.httpExposer != null) {
+      this.httpExposer.shutdown();
+    }
   }
 
 
   private void run(String configFileName) throws IOException {
+    try {
+
+      Map<String, Object> config = readConfig(new File(configFileName));
 
 
-    Map<String, Object> config = readConfig(new File(configFileName));
+
+      NickiServiceImpl ns = new NickiServiceImpl();
+      ns.setFormatter(new Formatter());
+
+      ns.setXmppConduit(new XMPPConduit((String)config.get("xmpp_server"),
+                                        (String)config.get("xmpp_username"),
+                                        (String)config.get("xmpp_password")));
 
 
+      // this will spin up a non-daemon thread.
 
-    NickiServiceImpl ns = new NickiServiceImpl();
-    ns.setFormatter(new Formatter());
-    /*
-    ns.setXmppConduit(new XMPPConduit(config.get("xmpp_server"),
-                                      config.get("xmpp_username"),
-                                      config.get("xmpp_password")));
-
-*/
-    // this will spin up a non-daemon thread.
-
-    int i = (Integer)config.get("incoming_http");
-    httpExposer = new HttpExposer(i, ns);
-    httpExposer.run();
+      int i = (Integer)config.get("incoming_http");
+      httpExposer = new HttpExposer(i, ns);
+      httpExposer.run();
+    } catch (ExitError e) {
+      log.error("Caught an ExitError. This is fatal. Check logs for details");
+      shutdown();
+    }
   }
 
 

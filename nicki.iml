@@ -39,6 +39,7 @@
           <root url="jar://$MODULE_DIR$/lib/slf4j-api-1.6.5.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/logback-classic-1.0.6.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/logback-core-1.0.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/smackx-3.2.1.jar!/" />
         </CLASSES>
         <JAVADOC>
           <root url="jar://$MODULE_DIR$/lib/commons-io-2.4-javadoc.jar!/" />
@@ -50,6 +51,7 @@
           <root url="jar://$MODULE_DIR$/lib/smack-3.2.1-javadoc.jar!/doc" />
           <root url="jar://$MODULE_DIR$/lib/logback-classic-1.0.6-javadoc.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/logback-core-1.0.6-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/smackx-3.2.1-javadoc.jar!/doc" />
         </JAVADOC>
         <SOURCES>
           <root url="jar://$MODULE_DIR$/lib/commons-io-2.4-sources.jar!/" />
@@ -61,6 +63,7 @@
           <root url="jar://$MODULE_DIR$/lib/velocity-1.7-sources.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/logback-classic-1.0.6-sources.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/logback-core-1.0.6-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/smackx-3.2.1-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

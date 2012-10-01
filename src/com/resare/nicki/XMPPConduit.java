@@ -11,6 +11,8 @@ import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * An XMPPConduit instance connects to the XMPP system with a username and
@@ -21,6 +23,8 @@ import org.jivesoftware.smack.packet.Presence;
  *
  */
 public class XMPPConduit {
+  private static final Logger log = LoggerFactory.getLogger(XMPPConduit.class);
+
 
   Connection connection;
 
@@ -60,7 +64,10 @@ public class XMPPConduit {
       connection.connect();
       connection.login(username, password, "nicki");
     } catch (XMPPException e) {
-      throw new Error(e);
+      log.error("Failed to log in to xmpp server {} with username {}: {}", new Object[] {
+        server, username, e.getMessage()
+      });
+      throw new ExitError();
     }
   }
 
